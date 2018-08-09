@@ -1,7 +1,7 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
-const vuxLoader = require('vux-loader')
-module.exports = vuxLoader.merge({
+
+module.exports = {
   build: {
     env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
@@ -36,5 +36,4 @@ module.exports = vuxLoader.merge({
     // just be aware of this issue when enabling this option.
     cssSourceMap: false
   }
-},{plugins: ['vux-ui']}
-)
+}

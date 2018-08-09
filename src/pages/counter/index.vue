@@ -2,8 +2,8 @@
   <div class="counter-warp">
     <p>Vuex counter：{{ count }}</p>
     <p>
-      <XButton @click="increment">+</XButton>
-      <XButton @click="decrement">-</XButton>
+      <button @click="increment">+</button>
+      <button @click="decrement">-</button>
     </p>
 
     <a href="/pages/index/main" class="home">去往首页</a>
@@ -13,11 +13,8 @@
 <script>
 // Use Vuex
 import store from '@/store/store.js'
-import { XButton } from 'vux'
+
 export default {
-  components: {
-    XButton
-  },
   computed: {
     count () {
       return store.state.count
