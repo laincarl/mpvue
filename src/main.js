@@ -17,6 +17,20 @@ export default {
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      selectedColor: '#00FF00',
+      list: [{
+        pagePath: 'pages/index/main',
+        text: '主页',
+        iconPath: 'static/home.png',
+        selectedIconPath: 'static/home_selected.png'
+      }, {
+        pagePath: 'pages/logs/main',
+        text: '日志',
+        iconPath: 'static/user.png',
+        selectedIconPath: 'static/user_selected.png'
+      }]
     }
   }
 }

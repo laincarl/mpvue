@@ -1,6 +1,7 @@
 <template>
   <div class="container" @click="clickHandle('test click', $event)">
-
+    <p>Vuex counter：{{ count }}</p>
+    <button v-if="!userInfo.avatarUrl" open-type="getUserInfo" @click="getUserInfo()">获取信息</button>
     <div class="userinfo" @click="bindViewTap">
       <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
       <div class="userinfo-nickname">
@@ -24,7 +25,7 @@
 
 <script>
 import card from '@/components/card'
-
+import store from '@/store/store.js'
 export default {
   data () {
     return {
@@ -32,7 +33,11 @@ export default {
       userInfo: {}
     }
   },
-
+  computed: {
+    count () {
+      return store.state.count
+    }
+  },
   components: {
     card
   },
@@ -45,9 +50,19 @@ export default {
     getUserInfo () {
       // 调用登录接口
       wx.login({
-        success: () => {
+        success: (res) => {
+          console.log(res)
+          if (res.code) {
+            console.log(res.code)
+            // wx.request({
+            //   url: `https://api.weixin.qq.com/sns/jscode2session?appid=${APPID}&secret=SECRET&js_code=${res.code}&grant_type=authorization_code`,
+            //   type: 'GET'
+            // })
+          }
           wx.getUserInfo({
+            withCredentials: true,
             success: (res) => {
+              console.log(res.userInfo)
               this.userInfo = res.userInfo
             }
           })
